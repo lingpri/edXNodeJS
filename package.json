@@ -1,0 +1,17 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "a sample node js project",
+  "main": "hello.js",
+  "scripts": {
+    "static": "serve -p 5050 static",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "priya rammohan",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "fastify-cli": "^6.1.1",
+    "serve": "^14.2.1"
+  }
+}
