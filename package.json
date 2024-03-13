@@ -10,6 +10,8 @@
   "author": "priya rammohan",
   "license": "ISC",
   "dependencies": {
+    "@fastify/websocket": "^9.0.0",
+    "axios": "^1.6.7",
     "fastify": "^4.26.2",
     "fastify-cli": "^6.1.1",
     "serve": "^14.2.1"
