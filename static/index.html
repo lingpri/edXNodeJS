@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>My App</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         /* Custom CSS rules */
         body {
@@ -31,46 +31,25 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-    <button id="fetch" class="btn btn-primary">Fetch Products</button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-                <select id="category" class="nav-link dropdown-toggle" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <select id="category">
                     <option class="dropdown-item" value="" hidden>Select Category</option>
                     <option class="dropdown-item" value="electronics">Electronics</option>
                     <option class="dropdown-item" value="confectionery">Confectionery</option>
                 </select>
-            </li>
-        </ul>
-    </div>
-    </div>
 </nav>
 <hr>
 <div id="products" class="product"></div>
-<form id="add">
-    <input name="name" placeholder="name" required />
-    <input name="rrp" placeholder="rrp" type="number" step="0.01" required />
-    <input name="info" placeholder="info" required />
-    <button type="submit">Add</button>
-</form>
 <template id="item">
     <style>
-        details {
-            font-size: 1.5em;
-        }
-        summary {
-            cursor: pointer;
-        }
-        p {
-            text-indent: 1.5rem;
-        }
+        details { font-size: 1.5em; }
+        summary { cursor: pointer; }
+        p { text-indent: 1.5rem; }
     </style>
     <details>
         <summary>
-            <strong><slot name="name"></slot></strong> -
-            <em><slot name="rrp"></slot></em>
-            <small>[Orders: <slot name="orders">pending</slot>]</small>
+            <strong>
+                <slot name="name"></slot></strong> -
+                <em><slot name="rrp"></slot></em>
         </summary>
         <p><slot name="info"></slot></p>
     </details>
