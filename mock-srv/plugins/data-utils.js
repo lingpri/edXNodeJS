@@ -1,6 +1,8 @@
 "use strict";
+
 import fp from "fastify-plugin";
-import { promisify } from "node:util";
+
+import {promisify} from "node:util"
 
 // Promisify setTimeout
 const timeout = promisify(setTimeout);
@@ -12,13 +14,11 @@ const orders = {
     B1: { total: 101 },
 };
 
-// Map category to ID prefix
 const catToPrefix = {
     electronics: "A",
-    confectionary: "B",
+    confectionery: "B",
 };
 
-// Simulate realtime orders
 async function* realtimeOrdersSimulator() {
     const ids = Object.keys(orders);
     while (true) {
@@ -31,7 +31,6 @@ async function* realtimeOrdersSimulator() {
     }
 }
 
-// Return current orders
 function* currentOrders(category) {
     const idPrefix = catToPrefix[category];
     if (!idPrefix) return;
@@ -41,14 +40,12 @@ function* currentOrders(category) {
     }
 }
 
-// Calculate next ID
 const calculateID = (idPrefix, data) => {
     const sorted = [...new Set(data.map(({ id }) => id))];
     const next = Number(sorted.pop().slice(1)) + 1;
-    return `${idPrefix}${next}`;
+    return `${idPrefix}${next}`
 };
 
-// Plugin
 export default fp(async function (fastify, opts) {
     fastify.decorate("currentOrders", currentOrders);
     fastify.decorate("realtimeOrders", realtimeOrdersSimulator);
@@ -59,4 +56,3 @@ export default fp(async function (fastify, opts) {
         return data;
     });
 });
-
